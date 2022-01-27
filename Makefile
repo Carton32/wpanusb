@@ -1,7 +1,9 @@
-KDIR ?= /lib/modules/`uname -r`/build
+KERNEL_SRC ?= /lib/modules/`uname -r`/build
 
-default:
-	$(MAKE) -C $(KDIR) M=$$PWD
+SRC := $(shell pwd)
+
+all:
+	$(MAKE) -C $(KERNEL_SRC) M=$(SRC) ARCH=$(ARCH) CROSS_COMPILE=$(CROSS_COMPILE)
 
 clean:
 	rm -f *.o *.ko *.mod.c .*.cmd

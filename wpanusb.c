@@ -175,9 +175,6 @@ static void wpanusb_process_urb(struct urb *urb)
 		return;
 	}
 
-	print_hex_dump_bytes("> ", DUMP_PREFIX_OFFSET, skb->data,
-			     urb->actual_length);
-
 	/* Get LQI at the end of the packet */
 	lqi = skb->data[len + 1];
 	dev_dbg(&udev->dev, "rx len %d lqi 0x%02x\n", len, lqi);
